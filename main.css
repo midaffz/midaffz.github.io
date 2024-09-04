@@ -42,12 +42,13 @@ body {
     left: 0;
     z-index: -1;
     background-attachment: fixed;
-    background-color: #F8FAFD;
 }
 
 
 @media (max-width: 768px) {
     body {
-        background-color: brown;
+        background-image: url('camelbakgrunn132.jpg');
+        background-size: cover;
+        background-position: center;
     }
 }
