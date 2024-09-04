@@ -1,0 +1,34 @@
+.block_top {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.block_top li {
+    display: inline-block;
+    margin-right: 20px;
+    padding-left: 15px;
+    overflow: visible;
+}
+
+.imgagee {
+        height: 5px;
+        width: 100px;
+}
+
+.imgagee img {
+    width: 350px;
+    height: 350px;
+    border-radius: 30px;
+}
+
+body {
+
+    background-image: url('  ');
+    height: 1000px;
+    background-position: top;
+    background-repeat: no-repeat; 
+    
+    
+
+}
