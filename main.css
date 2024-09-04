@@ -44,9 +44,3 @@ body {
     background-attachment: fixed;
     background-color: #F8FAFD;
 }
-
-@media (max-width: 768px) {
-    body {
-       
-    }
-}
