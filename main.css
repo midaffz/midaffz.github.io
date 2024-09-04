@@ -26,26 +26,14 @@ body {
 
     background-image: url('camelbakgrunn132.jpg');
     height: 1000px;
-    background-position: top;
+    background-position: Center;
     background-repeat: no-repeat;
     max-width: 100%;
-    height: auto;
-}
-
-
-@media (max-width: 768px) {
-    body {
-        font-size: 14px;
-        margin: 15px;
-         max-width: 90%;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        font-size: 12px;
-        margin: 10px;
-        max-width: 100%;
-    }
-    
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
