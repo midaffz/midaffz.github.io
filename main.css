@@ -48,8 +48,6 @@ body {
 
 @media (max-width: 768px) {
     body {
-        background-image: url('cCamelbakgrunn132-mobile.jpeg');
-        background-position: center;
-        background-size: cover;
+        background-color: brown;
     }
 }
