@@ -37,11 +37,11 @@ body {
     width: 100vw;
     background-repeat: no-repeat;
     background-size: cover;
-    position: fixed;
+    position: scroll;
     top: 0;
     left: 0;
     z-index: -1;
-    background-attachment: fixed;
+    background-attachment: scroll;
 }
 
 
