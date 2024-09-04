@@ -31,3 +31,21 @@ body {
     max-width: 100%;
     height: auto;
 }
+
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        margin: 15px;
+         max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+        margin: 10px;
+        max-width: 100%;
+    }
+    
+}
