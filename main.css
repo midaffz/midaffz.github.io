@@ -22,6 +22,13 @@
     border-radius: 30px;
 }
 
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
 body {
 
     background-image: url('camelbakgrunn132.jpg');
@@ -38,7 +45,7 @@ body {
 
 @media (max-width: 768px) {
     body {
-        background-size: cover;
+       
     }
 }
 
