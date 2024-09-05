@@ -45,17 +45,10 @@ body {
 }
 
 
-@media (max-width: 1920px) {
+@media (max-width: 768px) {
     body {
-        background-image: url('camelbakgrunn132.jpg');
-        font-size: 5px
-        padding: 2px;
+        background-color: lightblue;
         max-width: 100%;
         height: auto;
     }
-}
-
-@media .imgagee {
-    width: 1%;
-    height: 2%;
 }
