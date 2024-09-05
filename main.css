@@ -50,8 +50,14 @@ body {
     body {
         background-image: url('Camelbakgrunn333-mobile.jpg');
         background-attatchment: fixed;
-        max-width: 100%;
-        height: auto;
+        background-position: center center;
+        background-size: cover;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-repeat: no-repeat;
+        height: 100vh;
+        width: 100vw;
     }
 }
 about.html p {
