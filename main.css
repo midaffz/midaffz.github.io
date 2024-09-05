@@ -48,10 +48,15 @@ body {
 @media (max-width: 768px) {
     body {
         background-image: url('Camelbakgrunn333-mobile.jpg');
+        background-attatchment: fixed;
         background-color: lightblue;
         max-width: 100%;
         height: auto;
     }
+}
+
+@media p {
+    color: white;
 }
 
 li {
