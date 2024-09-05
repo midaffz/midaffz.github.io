@@ -64,13 +64,11 @@ body {
         .body {
             display: none;
         }
+    }
 }
 
 about.html p {
     text-align: left;
-}
-
-p {
     margin-left: 10px;
 }
 
