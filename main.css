@@ -48,8 +48,8 @@ body {
 @media (max-width: 768px) {
     body {
         background-image: url('camelbakgrunn132.jpg');
-        font-size: 14px
-        padding: 10px;
+        font-size: 5px
+        padding: 2px;
         max-width: 50%;
         height: auto;
     }
