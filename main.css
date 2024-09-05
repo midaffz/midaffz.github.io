@@ -50,6 +50,7 @@ body {
     body {
         background-image: url('Camelbakgrunn333-mobile.jpg');
         background-attatchment: fixed;
+        position: scroll;
         background-color: lightblue;
         max-width: 100%;
         height: auto;
