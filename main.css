@@ -63,10 +63,16 @@ body {
 
 @media about.html{
     background-color: orange;
+    .body {
+        display: none;
+    }
     
 }
 about.html p {
-    text-align: left 10px;
-    
+    text-align: left;
+}
+
+p {
+    left: 5px;
 }
 
