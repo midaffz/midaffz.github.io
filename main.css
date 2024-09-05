@@ -25,8 +25,8 @@
 }
 
 html, body{
-    margin: 2;
-    padding: 2;
+    margin: 0;
+    padding: 0;
     height: 100%;
     width: 100%;
 }
@@ -59,20 +59,18 @@ body {
         height: 100vh;
         width: 100vw;
     }
+    about.html {
+        background-color: orange;
+        .body {
+            display: none;
+        }
 }
 
-@media about.html{
-    background-color: orange;
-    .body {
-        display: none;
-    }
-    
-}
 about.html p {
     text-align: left;
 }
 
 p {
-    left: 5px;
+    margin-left: 10px;
 }
 
