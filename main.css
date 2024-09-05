@@ -60,8 +60,13 @@ body {
         width: 100vw;
     }
 }
+
+@media about.html{
+    background-color: orange;
+    
+}
 about.html p {
-    text-align: left;
-    left: 10px;
+    text-align: left 10px;
+    
 }
 
