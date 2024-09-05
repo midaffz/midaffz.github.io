@@ -9,6 +9,7 @@
     margin-right: 20px;
     padding-left: 15px;
     overflow: visible;
+    
 }
 
 .imgagee {
@@ -37,11 +38,11 @@ body {
     width: 100vw;
     background-repeat: no-repeat;
     background-size: cover;
-    position: scroll;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: -1;
-    background-attachment: scroll;
+    background-attachment: fixed;
 }
 
 
@@ -52,4 +53,17 @@ body {
         max-width: 100%;
         height: auto;
     }
+}
+
+li {
+    color: white;
+}
+
+about.html p {
+    text-align: left;
+}
+
+p {
+    color: black;
+    
 }
