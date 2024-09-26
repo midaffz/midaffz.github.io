@@ -62,6 +62,7 @@ body {
     .about {
         background-color: #F96209;
         background-image: none;
+
         
     }
 }
@@ -71,3 +72,8 @@ body {
     margin-left: 10px;
 }
 
+.about li {
+    margin-top: 5px;
+
+
+}
