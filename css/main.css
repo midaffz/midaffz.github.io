@@ -1,66 +1,94 @@
+
+/* Responsive Layout Enhancements */
+
+/* General reset and flexible width setup */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    font-size: 16px;
+}
+
 .block_top {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .block_top li {
     display: inline-block;
-    margin-right: 0%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
-    overflow: visible;
+    margin: 0 0.5rem;
     color: white;
-    
 }
 
 .imgagee {
-        height: 4%;
-        width: 100%;
-        position: fixed;
-        z-index:-2;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    z-index: -2;
 }
 
 .imgagee img {
-    width: 15%;
-    height: 700%;
+    width: 100%;
+    height: auto;
     border-radius: 6%;
 }
 
-html, body{
-    margin: 0%;
-    padding: 0%;
-    height: 100vh;
-    width: 100vw;
+/* Typography scaling for readability across devices */
+h1, h2, h3, h4, h5, h6, p {
+    padding: 0 1rem;
 }
 
-body {
-    padding: 0.5%;
-    background-image: url('/pic/camelbakgrunn132.jpg');
-    background-position: center center center center;
-    height: 100vh;
-    width: 100vw;
-    background-repeat: no-repeat;
-    background-size: cover;
-    top: 0%;
-    left: 0%;
-    z-index: -1;
-    background-attachment: fixed;
+/* Media Queries for Responsive Design */
+@media (max-width: 1200px) {
+    .block_top li {
+        padding-left: 0.4rem;
+        padding-right: 0.4rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
 }
 
-
-
-.longtextp {
-    text-align: left;
-    margin-left: 1%;
+@media (max-width: 992px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    p {
+        font-size: 1rem;
+    }
 }
 
-.about li {
-    margin-top: 0%;
-
-
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    .block_top {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
-.block_top :hover {
-    color: orange;
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+    .block_top {
+        text-align: center;
+    }
+    .imgagee img {
+        width: 80%;
+    }
+}
+
+/* Additional adjustments for mobile screens */
+@media (max-width: 360px) {
+    body {
+        font-size: 0.9rem;
+    }
 }
