@@ -161,7 +161,7 @@ section{
     }
     .scroll-down{
         right: 3%;
-        transition: .2s:
+        transition: .2s;
     }
 }
 @media (max-width: 1460px){
