@@ -128,13 +128,14 @@ section{
     transition: all .50s ease;
 }
 .icons i:hover{
-    color: #a17c4d  ;
+    color: #C19A6B  ;
     transform: translateY(-5px);
 }
 .scroll-down{
     position: absolute;
     bottom: 6%;
     right: 9%;
+
 }
 .scroll-down i{
     display: block;
@@ -148,6 +149,56 @@ section{
 .scroll-down i:hover{
     transform: translateY(-5px);
 }
+
+
+
+#boxz1 {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    right: 90px;
+    bottom: 100px;
+    background: linear-gradient(20deg, #a17c4d, #C19A6B, #C19A6B);
+    border-radius: 100px;
+    background-size: 10px;
+    font-size: 25px;
+    transition: opacity  1.5s ease;
+}
+
+#boxz2 {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    right: 90px;
+    bottom: 170px;
+    background: linear-gradient(20deg, #a17c4d, #C19A6B, #C19A6B);
+    border-radius: 100px;
+    background-size: 10px;
+    font-size: 25px;
+    transition: opacity  1.5s ease;
+}
+#boxz3 {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    right: 90px;
+    bottom: 30px;
+    background: linear-gradient(20deg, #a17c4d, #C19A6B, #C19A6B);
+    border-radius: 100px;
+    background-size: 10px;
+    font-size: 25px;
+    transition: opacity  1.5s ease;
+}
+
+.show {
+    display: block; /* Ensure it is part of the layout */
+    opacity: 1; /* Fully visible */
+    visibility: visible; /* Make it visible */
+}
+
+
+
+
 
 @media (max-width: 1535px){
     header{
@@ -216,27 +267,6 @@ section{
     #menu-icon{
         display: block;
     }
-    .navlist{
-        position: absolute;
-        top: -100%;
-        right: 0;
-        width: 300px;
-        height: 40vh;
-        background: #C19A6B   ;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        padding: 50px 20px;
-        transition: all .55s ease;
-        }
-        .navlist a{
-            margin-left: 0;
-            display: block;
-            margin: 7px 0;
-        }
-        .navlist.open{
-            right: 0;
-        }
 }
 @media (max-width: 680px){
     .hero-img img{
