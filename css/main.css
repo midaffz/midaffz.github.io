@@ -158,7 +158,7 @@ section{
     position: absolute;
     right: 90px;
     bottom: 100px;
-    background: linear-gradient(20deg, #a17c4d, #C19A6B, #C19A6B);
+    background: linear-gradient(20deg, #a17c4d, #C19A6B, #caa373);
     border-radius: 100px;
     background-size: 10px;
     font-size: 25px;
@@ -171,7 +171,7 @@ section{
     position: absolute;
     right: 90px;
     bottom: 170px;
-    background: linear-gradient(20deg, #a17c4d, #C19A6B, #C19A6B);
+    background: linear-gradient(20deg, #a17c4d, #C19A6B, #caa373);
     border-radius: 100px;
     background-size: 10px;
     font-size: 25px;
@@ -183,7 +183,7 @@ section{
     position: absolute;
     right: 90px;
     bottom: 30px;
-    background: linear-gradient(20deg, #a17c4d, #C19A6B, #C19A6B);
+    background: linear-gradient(20deg, #a17c4d, #C19A6B, #caa373);
     border-radius: 100px;
     background-size: 10px;
     font-size: 25px;
