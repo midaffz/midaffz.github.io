@@ -1,70 +1,43 @@
-<!-- Contact Form Section -->
-<section class="next-gen-contact">
-     <link rel="stylesheet" type="text/css" href="/css/contactform.css"> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Contact Form</title>
+      <link rel="stylesheet" type="text/css" href="/css/contactform.css"> 
       <script src="js/contactform.js"></script>
-    <div class="holographic-container">
-        <div class="quantum-form-wrapper">
-            <form id="nexusContactForm" class="cybernetic-form" data-parallax="true">
-                <div class="neon-header">
-                    <h3 class="gradient-text">Contact Nexus</h3>
-                    <div class="particle-beam"></div>
-                </div>
-
-                <div class="input-matrix">
-                    <!-- Dynamic Input Field -->
-                    <div class="field-orb">
-                        <input type="text" id="nexusName" class="neuro-input" data-particle-effect="true" required>
-                        <label class="hologram-label">Full Designation</label>
-                        <div class="particle-aura"></div>
-                        <div class="cyber-underline"></div>
-                    </div>
-
-                    <!-- Animated Email Field -->
-                    <div class="field-orb">
-                        <input type="email" id="nexusEmail" class="neuro-input" data-frequency="high" required>
-                        <label class="hologram-label">Quantum Mail</label>
-                        <div class="particle-aura"></div>
-                        <div class="cyber-underline"></div>
-                    </div>
-
-                    <!-- AI-Powered Textarea -->
-                    <div class="field-orb text-nexus">
-                        <textarea id="nexusMessage" class="neuro-input" data-sentiment-analysis="true" required></textarea>
-                        <label class="hologram-label">Transmission Content</label>
-                        <div class="particle-aura"></div>
-                        <div class="cyber-underline"></div>
-                        <div class="sentiment-display"></div>
-                    </div>
-                </div>
-
-                <!-- Advanced Security -->
-                <div class="cyber-security">
-                    <div class="biometric-check">
-                        <div class="retina-scan"></div>
-                        <span class="security-label">Identity Verification</span>
-                    </div>
-                    <div class="g-recaptcha" data-sitekey="YOUR_NEXUS_KEY"></div>
-                </div>
-
-                <!-- Quantum Submit -->
-                <button type="submit" class="quantum-submit">
-                    <span class="quantum-text">Initiate Transmission</span>
-                    <div class="energy-beam"></div>
-                    <div class="particle-burst"></div>
-                </button>
-            </form>
-            
-            <!-- Quantum Feedback -->
-            <div class="nexus-feedback">
-                <div class="hologram-message success">
-                    <div class="holo-particle"></div>
-                    Transmission Successful
-                </div>
-                <div class="hologram-message error">
-                    <div class="holo-particle"></div>
-                    Quantum Interference Detected
-                </div>
-            </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="luxury-container">
+        <div class="luxury-header">
+            <h2>Contact Connoisseur</h2>
         </div>
+        <form id="luxuryContactForm" class="luxury-form">
+            <div class="form-group">
+                <input type="text" id="luxuryName" class="form-input" placeholder=" " required>
+                <label class="floating-label" for="luxuryName">Full Name</label>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="luxuryEmail" class="form-input" placeholder=" " required>
+                <label class="floating-label" for="luxuryEmail">Email Address</label>
+            </div>
+
+            <div class="form-group">
+                <textarea id="luxuryMessage" class="form-input" placeholder=" " rows="5" required></textarea>
+                <label class="floating-label" for="luxuryMessage">Your Message</label>
+            </div>
+
+            <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> Send Enquiry
+            </button>
+            <div id="luxuryMessage" class="form-message"></div>
+        </form>
     </div>
-</section>
+
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
