@@ -1,0 +1,122 @@
+/* Next-Gen Contact Form Styles */
+.next-gen-contact {
+    --quantum-primary: #00f3ff;
+    --cyber-accent: #ff00ff;
+    --neon-border: 1px solid rgba(0, 243, 255, 0.3);
+    --particle-gradient: linear-gradient(45deg, #00f3ff 0%, #ff00ff 100%);
+    --hologram-bg: radial-gradient(circle at 50% 50%, 
+        rgba(0, 243, 255, 0.1) 0%, 
+        rgba(255, 0, 255, 0.1) 100%);
+}
+
+.holographic-container {
+    position: relative;
+    background: var(--hologram-bg);
+    border: var(--neon-border);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    transform-style: preserve-3d;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(0, 243, 255, 0.1);
+}
+
+.neuro-input {
+    background: transparent;
+    border: none;
+    color: var(--quantum-primary);
+    font-size: 1.1em;
+    padding: 1.5rem;
+    width: 100%;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.field-orb {
+    position: relative;
+    margin: 2rem 0;
+    perspective: 1000px;
+}
+
+.hologram-label {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.neuro-input:focus + .hologram-label,
+.neuro-input:not(:placeholder-shown) + .hologram-label {
+    transform: translateY(-200%);
+    font-size: 0.9em;
+    color: var(--quantum-primary);
+    text-shadow: 0 0 10px var(--quantum-primary);
+}
+
+.cyber-underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--particle-gradient);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.neuro-input:focus ~ .cyber-underline {
+    transform: scaleX(1);
+}
+
+.quantum-submit {
+    position: relative;
+    padding: 1.5rem 3rem;
+    background: transparent;
+    border: 2px solid var(--quantum-primary);
+    color: var(--quantum-primary);
+    font-size: 1.2em;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.quantum-submit:hover {
+    background: rgba(0, 243, 255, 0.1);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+}
+
+.energy-beam {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 243, 255, 0.3),
+        transparent
+    );
+    transition: 0.6s;
+}
+
+.quantum-submit:hover .energy-beam {
+    left: 100%;
+}
+
+/* Particle Animation System */
+@keyframes quantum-pulse {
+    0% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(2); }
+}
+
+.particle-aura::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--quantum-primary) 0%, transparent 70%);
+    animation: quantum-pulse 2s infinite;
+}
