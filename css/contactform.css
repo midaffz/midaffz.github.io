@@ -40,7 +40,7 @@ input, textarea {
 
 input:focus, textarea:focus {
     outline: none;
-    border-color: #C19A6B;
+    border-color: linear-gradient(245.59deg, #C19A6B      0%, #C19A6B      28.53%, #8a673c      75.52%);
     box-shadow: 0 0 15px rgba(193, 154, 107, 0.3);
 }
 
