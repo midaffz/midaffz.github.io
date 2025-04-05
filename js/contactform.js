@@ -1,43 +1,38 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('luxuryContactForm');
-    const messageContainer = document.createElement('div');
-    messageContainer.className = 'form-submitted-message';
-    form.parentNode.insertBefore(messageContainer, form.nextSibling);
+// Add these to your existing script
+const luxuryForm = {
+    init() {
+        this.addParallaxListeners();
+        this.addCustomCursor();
+        this.addScrollEffects();
+    },
 
-    // Clear fields on first keystroke
-    document.querySelectorAll('.form-input').forEach(input => {
-        let cleared = false;
-        
-        input.addEventListener('keydown', (e) => {
-            if (!cleared && e.key.length === 1) { // Only character keys
-                input.value = '';
-                cleared = true;
-            }
+    addParallaxListeners() {
+        document.addEventListener('mousemove', (e) => {
+            const container = document.querySelector('.luxury-container');
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            container.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
         });
-    });
+    },
 
-    // Form submission handler
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        try {
-            // Your existing submission logic here
-            
-            // Show message
-            messageContainer.textContent = 'Email sent successfully!';
-            messageContainer.classList.add('visible');
-            
-            // Clear fields
-            form.reset();
+    addCustomCursor() {
+        document.body.addEventListener('mousemove', (e) => {
+            const cursorFX = document.createElement('div');
+            cursorFX.className = 'cursor-fx';
+            cursorFX.style.left = `${e.clientX}px`;
+            cursorFX.style.top = `${e.clientY}px`;
+            document.body.appendChild(cursorFX);
+            setTimeout(() => cursorFX.remove(), 1000);
+        });
+    },
 
-            // Hide message after 3 seconds
-            setTimeout(() => {
-                messageContainer.classList.remove('visible');
-            }, 3000);
+    addScrollEffects() {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.documentElement.style.setProperty('--scroll', `${scrolled}px`);
+        });
+    }
+};
 
-        } catch (error) {
-            messageContainer.textContent = 'Error sending message';
-            messageContainer.classList.add('visible');
-        }
-    });
-});
+// Initialize when DOM loaded
+document.addEventListener('DOMContentLoaded', () => luxuryForm.init());
