@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-       <link rel="stylesheet" type="text/css" href="/css/contactform.css"> 
+        <link rel="stylesheet" type="text/css" href="/css/contactform.css"> 
       <script src="js/contactform.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camels Today</title>
+    <title>Professional Contact Form</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="luxury-container">
-        <form id="luxuryContactForm" action="send.php" method="POST">
-            <h2>Contact Connoisseur</h2>
+    <div class="container">
+        <form id="contactForm" method="POST">
+            <h2>Contact Us</h2>
             
             <div class="form-group">
-                <input type="text" id="name" name="name" required>
-                <label for="name">Full Name</label>
+                <input type="text" name="name" required 
+                       placeholder=" " 
+                       onfocus="this.value=''">
+                <label>Full Name</label>
             </div>
 
             <div class="form-group">
-                <input type="email" id="email" name="email" required>
-                <label for="email">Email Address</label>
+                <input type="email" name="email" required
+                       placeholder=" " 
+                       onfocus="this.value=''">
+                <label>Email Address</label>
             </div>
 
             <div class="form-group">
-                <textarea id="message" name="message" rows="5" required></textarea>
-                <label for="message">Your Message</label>
+                <textarea name="message" required
+                          placeholder=" "
+                          onfocus="this.value=''"></textarea>
+                <label>Your Message</label>
             </div>
 
-            <button type="submit">
-                <i class="fas fa-paper-plane"></i> Send Enquiry
-            </button>
-            <div id="formMessage"></div>
+            <button type="submit">Send Message</button>
+            
+            <?php if(isset($statusMsg)): ?>
+                <div class="status-msg <?= $statusType ?>">
+                    <?= $statusMsg ?>
+                </div>
+            <?php endif; ?>
         </form>
     </div>
-
-    
 </body>
 </html>
