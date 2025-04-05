@@ -1,47 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <link rel="icon" href="/pic/97344-200.png" type="image/png" sizes="32x32">
         <link rel="stylesheet" type="text/css" href="/css/contactform.css"> 
-      <script src="js/contactform.js"></script>
+        <script src="js/contactform.js"></script>
+        <link rel="icon" href="/pic/97344-200.png" type="image/png" sizes="32x32">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camels Today</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Professional Contact Form</title>
+    <style>
+        /* MAIN BACKGROUND */
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(245.59deg, #C19A6B 0%, #C19A6B 28.53%, #8a673c 75.52%);
+            font-family: Arial, sans-serif;
+        }
+
+        /* FORM CONTAINER */
+        .container {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(8px);
+            width: 90%;
+            max-width: 600px;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        /* FORM ELEMENTS */
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(193, 154, 107, 0.4);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.7);
+            color: #5a4a32;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #8a673c;
+            background: rgba(255,255,255,0.85);
+            box-shadow: 0 0 12px rgba(138, 103, 60, 0.2);
+        }
+
+        /* LABELS */
+        label {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7a6b5a;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            padding: 0 0.5rem;
+            background: linear-gradient(to bottom, 
+                rgba(255,255,255,0) 50%, 
+                rgba(255,255,255,0.7) 50%);
+        }
+
+        input:focus + label,
+        input:not(:placeholder-shown) + label,
+        textarea:focus + label,
+        textarea:not(:placeholder-shown) + label {
+            transform: translateY(-190%);
+            font-size: 0.85em;
+            color: #8a673c;
+        }
+
+        /* BUTTON */
+        button {
+            width: 100%;
+            padding: 1.1rem;
+            background: linear-gradient(245.59deg, 
+                rgba(244, 235, 208, 0.9) 0%, 
+                rgba(234, 220, 188, 0.9) 28.53%, 
+                rgba(224, 205, 168, 0.9) 75.52%);
+            color: #8a673c;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(245.59deg, 
+                rgba(255, 249, 235, 0.95) 0%, 
+                rgba(245, 235, 210, 0.95) 28.53%, 
+                rgba(235, 220, 185, 0.95) 75.52%);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <form id="contactForm" method="POST">
-            <h2>Contact Us</h2>
+        <form id="contactForm">
+            <h2 style="color: #fff; text-align: center; margin-bottom: 2rem;">Contact Us</h2>
             
             <div class="form-group">
-                <input type="text" name="name" required 
-                       placeholder=" " 
-                       onfocus="this.value=''">
-                <label>Full Name</label>
+                <input type="text" id="name" required placeholder=" ">
+                <label for="name">Full Name</label>
             </div>
 
             <div class="form-group">
-                <input type="email" name="email" required
-                       placeholder=" " 
-                       onfocus="this.value=''">
-                <label>Email Address</label>
+                <input type="email" id="email" required placeholder=" ">
+                <label for="email">Email Address</label>
             </div>
 
             <div class="form-group">
-                <textarea name="message" required
-                          placeholder=" "
-                          onfocus="this.value=''"></textarea>
-                <label>Your Message</label>
+                <textarea id="message" required placeholder=" " rows="5"></textarea>
+                <label for="message">Your Message</label>
             </div>
 
             <button type="submit">Send Message</button>
-            
-            <?php if(isset($statusMsg)): ?>
-                <div class="status-msg <?= $statusType ?>">
-                    <?= $statusMsg ?>
-                </div>
-            <?php endif; ?>
         </form>
     </div>
 </body>
