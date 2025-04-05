@@ -14,6 +14,46 @@ document.addEventListener('DOMContentLoaded', () => {
             message: document.getElementById('luxuryMessage').value.trim()
         };
 
+        document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('luxuryContactForm');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+    
+    // Clear fields on focus
+    document.querySelectorAll('.form-input').forEach(input => {
+        input.addEventListener('focus', () => {
+            input.value = '';
+            input.style.backgroundColor = 'rgba(255, 255, 255, 1)';
+        });
+    });
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        try {
+            // Your existing submission logic
+            
+            // Show confirmation
+            confirmationMessage.classList.add('show');
+            
+            // Clear all fields
+            form.reset();
+            
+            // Reset fields visual state
+            document.querySelectorAll('.form-input').forEach(input => {
+                input.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            });
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                confirmationMessage.classList.remove('show');
+            }, 5000);
+
+        } catch (error) {
+            // Error handling
+        }
+    });
+});
+
         // Validation
         if (!formData.name || !formData.email || !formData.message) {
             showMessage('Please fill in all required fields', 'error');
