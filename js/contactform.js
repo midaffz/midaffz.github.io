@@ -1,3 +1,4 @@
+
 // script.js
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('luxuryContactForm');
@@ -56,4 +57,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Rest of the code remains same...
+});
+    });
+
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    function showMessage(text, type) {
+        formMessage.textContent = text;
+        formMessage.className = `form-message visible ${type}`;
+        setTimeout(() => {
+            formMessage.className = 'form-message';
+        }, 5000);
+    }
+
+    function fakeApiCall() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                Math.random() > 0.2 ? resolve() : reject();
+            }, 1000);
+        });
+    }
 });
