@@ -1,38 +1,59 @@
-// Add these to your existing script
-const luxuryForm = {
-    init() {
-        this.addParallaxListeners();
-        this.addCustomCursor();
-        this.addScrollEffects();
-    },
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('luxuryContactForm');
+    const formMessage = document.getElementById('luxuryMessage');
 
-    addParallaxListeners() {
-        document.addEventListener('mousemove', (e) => {
-            const container = document.querySelector('.luxury-container');
-            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-            container.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-        });
-    },
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        formMessage.style.display = 'none';
 
-    addCustomCursor() {
-        document.body.addEventListener('mousemove', (e) => {
-            const cursorFX = document.createElement('div');
-            cursorFX.className = 'cursor-fx';
-            cursorFX.style.left = `${e.clientX}px`;
-            cursorFX.style.top = `${e.clientY}px`;
-            document.body.appendChild(cursorFX);
-            setTimeout(() => cursorFX.remove(), 1000);
-        });
-    },
+        // Get form elements
+        const formData = {
+            name: document.getElementById('luxuryName').value.trim(),
+            email: document.getElementById('luxuryEmail').value.trim(),
+            message: document.getElementById('luxuryMessage').value.trim()
+        };
 
-    addScrollEffects() {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            document.documentElement.style.setProperty('--scroll', `${scrolled}px`);
-        });
-    }
-};
+        // Validation
+        if (!formData.name || !formData.email || !formData.message) {
+            showMessage('Please fill in all required fields', 'error');
+            return;
+        }
 
-// Initialize when DOM loaded
-document.addEventListener('DOMContentLoaded', () => luxuryForm.init());
+        if (!validateEmail(formData.email)) {
+            showMessage('Please enter a valid email address', 'error');
+            return;
+        }
+
+        // Show loading state
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        submitBtn.classList.add('loading');
+        submitBtn.disabled = true;
+
+        try {
+            const response = await fetch('submit.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+            
+            if (result.success) {
+                showMessage('Message sent successfully!', 'success');
+                contactForm.reset();
+            } else {
+                showMessage(result.error || 'Error sending message', 'error');
+            }
+        } catch (error) {
+            showMessage('Network error. Please try again.', 'error');
+        } finally {
+            submitBtn.classList.remove('loading');
+            submitBtn.disabled = false;
+        }
+    });
+
+    // Rest of the code remains same...
+});
