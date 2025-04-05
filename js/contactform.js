@@ -1,12 +1,4 @@
-// Add these to your existing script
-const luxuryForm = {
-    init() {
-        this.addParallaxListeners();
-        this.addCustomCursor();
-        this.addScrollEffects();
-    },
-
-    // Add these to your existing script
+    
 const luxuryForm = {
     init() {
         this.addParallaxListeners();
