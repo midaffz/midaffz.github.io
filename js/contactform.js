@@ -1,5 +1,18 @@
 
-// script.js
+
+function showSuccessMessage() {
+    const flash = document.createElement('div');
+    flash.className = 'success-flash';
+    flash.textContent = 'Email sent successfully!';
+    document.body.appendChild(flash);
+    
+    setTimeout(() => flash.classList.add('visible'), 50);
+    setTimeout(() => {
+        flash.classList.remove('visible');
+        setTimeout(() => flash.remove(), 300);
+    }, 3000);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('luxuryContactForm');
     const formMessage = document.getElementById('luxuryMessage');
