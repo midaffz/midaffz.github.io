@@ -1,39 +1,43 @@
 <?php
-header('Content-Type: application/json');
+header('Content-Type: text/plain');
 
-$response = ['success' => false, 'error' => ''];
-
-try {
-    // Get JSON input
-    $data = json_decode(file_get_contents('php://input'), true);
-    
-    // Validate input
-    if (empty($data['name']) || empty($data['email']) || empty($data['message'])) {
-        throw new Exception('All fields are required');
+// Validate required fields
+$required = ['name', 'email', 'message'];
+foreach ($required as $field) {
+    if (empty($_POST[$field])) {
+        die("All fields are required");
     }
-
-    if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-        throw new Exception('Invalid email format');
-    }
-
-    // Sanitize data
-    $name = htmlspecialchars($data['name']);
-    $email = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
-    $message = htmlspecialchars($data['message']);
-
-    // Send email (replace with your actual email logic)
-    $to = 'your@email.com';
-    $subject = "New Contact: $name";
-    $headers = "From: $email\r\nReply-To: $email\r\n";
-    
-    if (mail($to, $subject, $message, $headers)) {
-        $response['success'] = true;
-    } else {
-        throw new Exception('Failed to send email');
-    }
-
-} catch (Exception $e) {
-    $response['error'] = $e->getMessage();
 }
 
-echo json_encode($response);
+// Validate email format
+if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    die("Invalid email address");
+}
+
+// Sanitize inputs
+$name = htmlspecialchars($_POST['name']);
+$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+$message = htmlspecialchars($_POST['message']);
+
+// Configure email
+$to = 'midaff@camels.today';
+$subject = "New Contact: $name";
+$headers = "From: $email\r\n";
+$headers .= "Reply-To: $email\r\n";
+$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+// HTML email body
+$body = "
+    <h2>New Contact Form Submission</h2>
+    <p><strong>Name:</strong> $name</p>
+    <p><strong>Email:</strong> $email</p>
+    <p><strong>Message:</strong></p>
+    <p>".nl2br($message)."</p>
+";
+
+// Send email
+if (mail($to, $subject, $body, $headers)) {
+    echo "success";
+} else {
+    echo "Failed to send email. Check server configuration.";
+}
