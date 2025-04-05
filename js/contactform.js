@@ -1,110 +1,56 @@
-// Advanced Quantum Form Handler
-class NexusForm {
-    constructor() {
-        this.form = document.getElementById('nexusContactForm');
-        this.initQuantumEffects();
-        this.initParticleSystem();
-        this.initBiometricScan();
-        this.bindEvents();
-    }
-
-    initQuantumEffects() {
-        // Create quantum entanglement between fields
-        const fields = this.form.querySelectorAll('.neuro-input');
-        fields.forEach(field => {
-            field.addEventListener('focus', () => this.activateQuantumField(field));
-            field.addEventListener('blur', () => this.deactivateQuantumField(field));
-        });
-    }
-
-    activateQuantumField(field) {
-        const orb = field.closest('.field-orb');
-        orb.style.transform = 'translateZ(50px)';
-        orb.querySelector('.particle-aura').style.opacity = '1';
-    }
-
-    deactivateQuantumField(field) {
-        const orb = field.closest('.field-orb');
-        orb.style.transform = 'translateZ(0)';
-        orb.querySelector('.particle-aura').style.opacity = '0';
-    }
-
-    initParticleSystem() {
-        // Initialize particle.js with custom configuration
-        particlesJS('particle-network', {
-            particles: {
-                number: { value: 150 },
-                color: { value: '#00f3ff' },
-                opacity: { value: 0.5 },
-                size: { value: 2 },
-                move: { 
-                    enable: true,
-                    speed: 1,
-                    direction: 'none',
-                    random: true
-                }
-            }
-        });
-    }
-
-    initBiometricScan() {
-        // Add retina scan animation
-        const retinaScan = document.querySelector('.retina-scan');
-        setInterval(() => {
-            retinaScan.style.background = `linear-gradient(
-                ${Math.random() * 360}deg,
-                #00f3ff 0%,
-                #ff00ff 100%
-            )`;
-        }, 3000);
-    }
-
-    bindEvents() {
-        this.form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            await this.processQuantumTransmission();
-        });
-    }
-
-    async processQuantumTransmission() {
-        // Add quantum encryption layer
-        const formData = new FormData(this.form);
-        const encryptedData = this.quantumEncrypt(formData);
-        
-        try {
-            const response = await fetch('/quantum-gateway', {
-                method: 'POST',
-                headers: {
-                    'Quantum-Encryption': 'v2.0',
-                    'X-Origin-Galaxy': 'MilkyWay'
-                },
-                body: encryptedData
-            });
-            
-            this.showHolographicFeedback(await response.json());
-        } catch (error) {
-            this.showQuantumError(error);
-        }
-    }
-
-    quantumEncrypt(data) {
-        // Advanced encryption simulation
-        return JSON.stringify({
-            payload: btoa(JSON.stringify(Object.fromEntries(data))),
-            timestamp: Date.now(),
-            quantumSignature: this.generateQuantumSignature()
-        });
-    }
-
-    generateQuantumSignature() {
-        return Array.from({ length: 64 }, () => 
-            Math.floor(Math.random() * 16).toString(16)
-        ).join('');
-    }
-}
-
-// Initialize Nexus Communication Protocol
 document.addEventListener('DOMContentLoaded', () => {
-    new NexusForm();
-    initQuantumParticles();
+    const contactForm = document.getElementById('luxuryContactForm');
+    const formMessage = document.getElementById('luxuryMessage');
+
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        formMessage.style.display = 'none';
+
+        // Form validation
+        const name = document.getElementById('luxuryName').value.trim();
+        const email = document.getElementById('luxuryEmail').value.trim();
+        const message = document.getElementById('luxuryMessage').value.trim();
+
+        if (!name || !email || !message) {
+            showMessage('Please fill in all required fields', 'error');
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            showMessage('Please enter a valid email address', 'error');
+            return;
+        }
+
+        try {
+            // Replace with actual fetch request
+            const response = await fakeApiCall();
+            
+            showMessage('Message sent successfully!', 'success');
+            contactForm.reset();
+            if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
+        } catch (error) {
+            showMessage('Error sending message. Please try again.', 'error');
+        }
+    });
+
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    function showMessage(text, type) {
+        formMessage.textContent = text;
+        formMessage.className = `form-message visible ${type}`;
+        setTimeout(() => {
+            formMessage.className = 'form-message';
+        }, 5000);
+    }
+
+    function fakeApiCall() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                Math.random() > 0.2 ? resolve() : reject();
+            }, 1000);
+        });
+    }
 });
