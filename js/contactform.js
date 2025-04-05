@@ -1,96 +1,63 @@
-
-
-function showSuccessMessage() {
-    const flash = document.createElement('div');
-    flash.className = 'success-flash';
-    flash.textContent = 'Email sent successfully!';
-    document.body.appendChild(flash);
-    
-    setTimeout(() => flash.classList.add('visible'), 50);
-    setTimeout(() => {
-        flash.classList.remove('visible');
-        setTimeout(() => flash.remove(), 300);
-    }, 3000);
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-    const contactForm = document.getElementById('luxuryContactForm');
-    const formMessage = document.getElementById('luxuryMessage');
+    const form = document.getElementById('luxuryContactForm');
+    const inputs = {
+        name: document.getElementById('luxuryName'),
+        email: document.getElementById('luxuryEmail'),
+        message: document.getElementById('luxuryMessage')
+    };
 
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        formMessage.style.display = 'none';
-
-        // Get form elements
-        const formData = {
-            name: document.getElementById('luxuryName').value.trim(),
-            email: document.getElementById('luxuryEmail').value.trim(),
-            message: document.getElementById('luxuryMessage').value.trim()
-        };
-
-        // Validation
-        if (!formData.name || !formData.email || !formData.message) {
-            showMessage('Please fill in all required fields', 'error');
-            return;
-        }
-
-        if (!validateEmail(formData.email)) {
-            showMessage('Please enter a valid email address', 'error');
-            return;
-        }
-
-        // Show loading state
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        submitBtn.classList.add('loading');
-        submitBtn.disabled = true;
-
-        try {
-            const response = await fetch('submit.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
-
-            const result = await response.json();
-            
-            if (result.success) {
-                showMessage('Message sent successfully!', 'success');
-                contactForm.reset();
-            } else {
-                showMessage(result.error || 'Error sending message', 'error');
+    // Clear fields on first keystroke
+    Object.values(inputs).forEach(input => {
+        let isCleared = false;
+        input.addEventListener('keydown', (e) => {
+            if (!isCleared && e.key.length === 1) {
+                input.value = '';
+                isCleared = true;
             }
-        } catch (error) {
-            showMessage('Network error. Please try again.', 'error');
-        } finally {
-            submitBtn.classList.remove('loading');
-            submitBtn.disabled = false;
+        });
+    });
+
+    // Form submission
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Basic validation
+        if (!inputs.name.value || !inputs.email.value || !inputs.message.value) {
+            showMessage('Please fill all fields', 'error');
+            return;
         }
-    });
 
-    // Rest of the code remains same...
-});
-    });
+        if (!validateEmail(inputs.email.value)) {
+            showMessage('Invalid email format', 'error');
+            return;
+        }
 
-    function validateEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
-    }
+        // Send email using EmailJS (free service)
+        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+            name: inputs.name.value,
+            email: inputs.email.value,
+            message: inputs.message.value
+        }, 'YOUR_USER_ID')
+        .then(() => {
+            showMessage('Email sent successfully!', 'success');
+            form.reset();
+        }, (error) => {
+            showMessage('Failed to send email', 'error');
+        });
+    });
 
     function showMessage(text, type) {
-        formMessage.textContent = text;
-        formMessage.className = `form-message visible ${type}`;
+        const msg = document.createElement('div');
+        msg.textContent = text;
+        msg.className = `form-message ${type} visible`;
+        document.body.appendChild(msg);
+        
         setTimeout(() => {
-            formMessage.className = 'form-message';
-        }, 5000);
+            msg.remove();
+        }, 3000);
     }
 
-    function fakeApiCall() {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                Math.random() > 0.2 ? resolve() : reject();
-            }, 1000);
-        });
+    function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 });
