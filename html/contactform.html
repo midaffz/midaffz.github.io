@@ -2,113 +2,171 @@
 <html lang="en">
 <head>
         <link rel="stylesheet" type="text/css" href="/css/contactform.css"> 
-        <script src="js/contactform.js"></script>
-        <link rel="icon" href="/pic/97344-200.png" type="image/png" sizes="32x32">
+      <script src="js/contactform.js"></script>
+<link rel="icon" href="/pic/97344-200.png" type="image/png" sizes="32x32">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Contact Form</title>
+    <title>Premium Contact Form</title>
     <style>
-        /* MAIN BACKGROUND */
+        :root {
+            --gold-1: #C19A6B;
+            --gold-2: #8a673c;
+            --text-dark: #2b2d42;
+            --text-light: #f8f9fa;
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(245.59deg, #C19A6B 0%, #C19A6B 28.53%, #8a673c 75.52%);
-            font-family: Arial, sans-serif;
+            background: linear-gradient(245.59deg, 
+                var(--gold-1) 0%, 
+                var(--gold-1) 28.53%, 
+                var(--gold-2) 75.52%);
+            font-family: 'Inter', system-ui;
+            perspective: 1000px;
         }
 
-        /* FORM CONTAINER */
         .container {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 2rem;
-            border-radius: 12px;
-            backdrop-filter: blur(8px);
-            width: 90%;
-            max-width: 600px;
-            border: 1px solid rgba(255,255,255,0.15);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            backdrop-filter: blur(12px) saturate(180%);
+            width: min(90%, 640px);
+            box-shadow: 0 32px 64px rgba(0,0,0,0.15),
+                        inset 0 -2px 4px rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            transform-style: preserve-3d;
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        /* FORM ELEMENTS */
+        .container:hover {
+            transform: rotateX(1deg) rotateY(1deg) translateZ(20px);
+        }
+
+        h2 {
+            color: var(--text-light);
+            text-align: center;
+            margin: 0 0 2.5rem;
+            font-size: 2.25rem;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             position: relative;
         }
 
         input, textarea {
             width: 100%;
-            padding: 1rem;
+            padding: 1.25rem 1.5rem;
             border: 2px solid rgba(193, 154, 107, 0.4);
-            border-radius: 8px;
-            background: rgba(255,255,255,0.7);
-            color: #5a4a32;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
+            border-radius: 0.75rem;
+            background: rgba(255,255,255,0.88);
+            color: var(--text-dark);
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         input:focus, textarea:focus {
             outline: none;
-            border-color: #8a673c;
-            background: rgba(255,255,255,0.85);
-            box-shadow: 0 0 12px rgba(138, 103, 60, 0.2);
+            border-color: var(--gold-2);
+            box-shadow: 0 0 24px rgba(138, 103, 60, 0.25);
+            background: rgba(255,255,255,0.95);
+            transform: translateZ(8px);
         }
 
-        /* LABELS */
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
         label {
             position: absolute;
-            left: 1rem;
+            left: 1.5rem;
             top: 50%;
             transform: translateY(-50%);
-            color: #7a6b5a;
+            color: rgba(90, 74, 50, 0.8);
             pointer-events: none;
-            transition: all 0.3s ease;
-            padding: 0 0.5rem;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             background: linear-gradient(to bottom, 
                 rgba(255,255,255,0) 50%, 
-                rgba(255,255,255,0.7) 50%);
+                rgba(255,255,255,0.88) 50%);
+            padding: 0 0.5rem;
         }
 
-        input:focus + label,
-        input:not(:placeholder-shown) + label,
-        textarea:focus + label,
-        textarea:not(:placeholder-shown) + label {
-            transform: translateY(-190%);
-            font-size: 0.85em;
-            color: #8a673c;
+        input:focus ~ label,
+        input:not(:placeholder-shown) ~ label,
+        textarea:focus ~ label,
+        textarea:not(:placeholder-shown) ~ label {
+            transform: translateY(-200%) scale(0.9);
+            color: var(--gold-2);
+            left: 1rem;
         }
 
-        /* BUTTON */
         button {
             width: 100%;
-            padding: 1.1rem;
+            padding: 1.25rem;
             background: linear-gradient(245.59deg, 
-                rgba(244, 235, 208, 0.9) 0%, 
-                rgba(234, 220, 188, 0.9) 28.53%, 
-                rgba(224, 205, 168, 0.9) 75.52%);
-            color: #8a673c;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
-            cursor: pointer;
+                rgba(244, 235, 208, 0.95) 0%, 
+                rgba(234, 220, 188, 0.95) 28.53%, 
+                rgba(224, 205, 168, 0.95) 75.52%);
+            color: var(--gold-2);
+            border: none;
+            border-radius: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            transition: all 0.3s ease;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
         }
 
         button:hover {
-            background: linear-gradient(245.59deg, 
-                rgba(255, 249, 235, 0.95) 0%, 
-                rgba(245, 235, 210, 0.95) 28.53%, 
-                rgba(235, 220, 185, 0.95) 75.52%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(255,255,255,0.3), 
+                transparent);
+            transition: 0.6s;
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem;
+                border-radius: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <form id="contactForm">
-            <h2 style="color: #fff; text-align: center; margin-bottom: 2rem;">Contact Us</h2>
+            <h2>Contact Connoisseur</h2>
             
             <div class="form-group">
                 <input type="text" id="name" required placeholder=" ">
@@ -125,7 +183,9 @@
                 <label for="message">Your Message</label>
             </div>
 
-            <button type="submit">Send Message</button>
+            <button type="submit">
+                <span>Send Enquiry</span>
+            </button>
         </form>
     </div>
 </body>
