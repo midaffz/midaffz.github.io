@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    emailjs.init('YOUR_EMAILJS_USER_ID');
-    
     const form = document.getElementById('luxuryContactForm');
     const message = document.getElementById('formMessage');
 
@@ -15,36 +13,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Validation
-        const name = document.getElementById('luxuryName').value.trim();
-        const email = document.getElementById('luxuryEmail').value.trim();
-        const msg = document.getElementById('luxuryMessage').value.trim();
-
-        if (!name || !email || !msg) {
-            showMessage('Please fill all fields', 'error');
-            return;
+        const formData = new FormData(form);
+        
+        try {
+            const response = await fetch('send.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.text();
+            
+            if (result === 'success') {
+                showMessage('Message sent successfully!', 'success');
+                form.reset();
+            } else {
+                showMessage(result || 'Error sending message', 'error');
+            }
+        } catch (error) {
+            showMessage('Network error. Please try again.', 'error');
         }
-
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            showMessage('Invalid email address', 'error');
-            return;
-        }
-
-        // Send email
-        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
-            name: name,
-            email: email,
-            message: msg
-        })
-        .then(() => {
-            showMessage('Message sent successfully!', 'success');
-            form.reset();
-        }, () => {
-            showMessage('Failed to send message', 'error');
-        });
     });
 
     function showMessage(text, type) {
