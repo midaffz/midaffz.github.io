@@ -1,13 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('luxuryContactForm');
-    
-    // Clear fields on input
+    const messageContainer = document.createElement('div');
+    messageContainer.className = 'form-submitted-message';
+    form.parentNode.insertBefore(messageContainer, form.nextSibling);
+
+    // Clear fields on first keystroke
     document.querySelectorAll('.form-input').forEach(input => {
-        input.addEventListener('input', (e) => {
-            if (e.target.value.trim() !== '') {
-                e.target.dataset.hasContent = 'true';
-            } else {
-                delete e.target.dataset.hasContent;
+        let cleared = false;
+        
+        input.addEventListener('keydown', (e) => {
+            if (!cleared && e.key.length === 1) { // Only character keys
+                input.value = '';
+                cleared = true;
             }
         });
     });
@@ -16,20 +20,24 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Your existing submission logic
-        
-        // Show success message
-        const successMsg = document.createElement('div');
-        successMsg.textContent = 'Email sent successfully!';
-        successMsg.className = 'success-message';
-        form.appendChild(successMsg);
-        
-        // Remove message after 3 seconds
-        setTimeout(() => {
-            successMsg.remove();
-        }, 3000);
-        
-        // Clear fields
-        form.reset();
+        try {
+            // Your existing submission logic here
+            
+            // Show message
+            messageContainer.textContent = 'Email sent successfully!';
+            messageContainer.classList.add('visible');
+            
+            // Clear fields
+            form.reset();
+
+            // Hide message after 3 seconds
+            setTimeout(() => {
+                messageContainer.classList.remove('visible');
+            }, 3000);
+
+        } catch (error) {
+            messageContainer.textContent = 'Error sending message';
+            messageContainer.classList.add('visible');
+        }
     });
 });
