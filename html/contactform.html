@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <link rel="stylesheet" type="text/css" href="/css/contactform.css"> 
-     <script src="js/contactform.js"></script>
+      <link rel="stylesheet" type="text/css" href="/css/contactform.css"> 
+      <script src="js/contactform.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Contact Form</title>
@@ -11,34 +11,30 @@
 </head>
 <body>
     <div class="luxury-container">
-        <div class="luxury-header">
-            <h2>Contact Connoisseur</h2>
-        </div>
-        <form id="luxuryContactForm" class="luxury-form">
-            <div class="form-group">
-                <input type="text" id="luxuryName" class="form-input" placeholder=" " required>
-                <label class="floating-label" for="luxuryName">Full Name</label>
-            </div>
-
-            <div class="form-group">
-                <input type="email" id="luxuryEmail" class="form-input" placeholder=" " required>
-                <label class="floating-label" for="luxuryEmail">Email Address</label>
-            </div>
-
-            <div class="form-group">
-                <textarea id="luxuryMessage" class="form-input" placeholder=" " rows="5" required></textarea>
-                <label class="floating-label" for="luxuryMessage">Your Message</label>
-            </div>
-
+        <form id="luxuryContactForm">
+            <h2>Camels Today</h2>
             
-            <button type="submit" class="submit-btn">
-                <i class="fas fa-paper-plane"></i> Send Enquiry
-            </button>
-            <div id="luxuryMessage" class="form-message"></div>
+            <div class="form-group">
+                <input type="text" id="luxuryName" required>
+                <label for="luxuryName">Full Name</label>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="luxuryEmail" required>
+                <label for="luxuryEmail">Email Address</label>
+            </div>
+
+            <div class="form-group">
+                <textarea id="luxuryMessage" rows="5" required></textarea>
+                <label for="luxuryMessage">Your Message</label>
+            </div>
+
+            <button type="submit">Send Enquiry <i class="fas fa-paper-plane"></i></button>
+            <div id="formMessage"></div>
         </form>
     </div>
 
-    
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
