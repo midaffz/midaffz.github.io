@@ -5,6 +5,11 @@
     --text-dark: #2b2d42;
 }
 
+.form-input:focus::placeholder {
+    color: transparent;
+    transition: color 0.3s ease;
+}
+
 .form-input {
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.95) !important;
