@@ -1,4 +1,23 @@
-/* Dynamic Dark Mode Adaptation */
+
+.success-flash {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(40, 167, 69, 0.9);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.success-flash.visible {
+    opacity: 1;
+    transform: translateY(0);
+} 
 @media (prefers-color-scheme: dark) {
     body {
         background: linear-gradient(245.59deg, 
